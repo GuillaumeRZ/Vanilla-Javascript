@@ -10,3 +10,9 @@ Il se structure comme suit:
 ```
 
 > Je vous invite très vivement à faire un `git clone` du projet et pas seulement un download car vous allez être ammené à le `git pull` ou à faire des `Pull Requests` dessus ! 🙊
+
+🙋 2. Any questions ?
+
+🐦 [@Gouig_]
+
+[@Gouig_]: <https://twitter.com/Gouig_>
