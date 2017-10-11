@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Var Scope Demo</title>
+</head>
+
+<body>
+
+  <h1>Psst, look at the Dev.Console 💃</h1>
+  <h1 id='theOne'>Psst, look at the Dev.Console 💃</h1>
+  <h1 class='special'>Psst, look at the Dev.Console 💃</h1>
+  <h1 class='special'>Psst, look at the Dev.Console 💃</h1>
+  <h1>Psst, look at the Dev.Console 💃</h1>
+  <h1>Psst, look at the Dev.Console 💃</h1>
+
+  <script>
+    const theOne = document.querySelector('#theOne');
+    console.log(theOne);
+    const titleButtons = document.querySelectorAll('h1.special');
+    console.log(titleButtons);
+
+    function popUp(e) {
+      console.log(e);
+      console.log('You just clicked on a H1 custom button');
+      alert('Moh ! Clicked.');
+    }
+
+    titleButtons.forEach(titleButton => titleButton.addEventListener('click', popUp));
+  </script>
+
+</body>
+
+</html>

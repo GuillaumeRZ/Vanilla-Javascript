@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+</head>
+  <title>Var Scope Demo</title>
+
+<body>
+
+  <h1>Psst, look at the Dev.Console 💃</h1>
+
+  <script>
+  // Var globally define:
+  var country = '🇫🇷';
+  // Can be redefine:
+  country = '🇺🇸';
+
+  // Var is function scope:
+  function() {
+    var box = '📫';
+    console.log(box);
+  }
+  console.log(box);
+
+  // Function scope I said:
+  var age = 21;
+      if( age > 18 ) {
+        var diffFromMajority = age - 18;
+        console.log(`${diffFromMajority} years from majority`);
+      }
+      console.log(diffFromMajority);
+
+      // So, what is block scope ? Let and const:
+      var yourAge = 19;
+      if ( yourAge > 18 ) {
+        let diffFromMajority = yourAge - 18;
+        console.log(`Your age is ${diffFromMajority} years from majority`);
+      }
+      console.log(diffFromMajority);
+
+      // Let can be redefine, just as var:
+      let sun = '🌞';
+      console.log(sun);
+      sun = '🌻';
+      console.log(sun);
+
+      // Const can not be redefine:
+      const beach = '🏝';
+      // beach = '🌧';
+      console.log(beach);
+
+      // Const object properties can change:
+      const person = {
+        name: 'Guillaume',
+        age: 21,
+        majeur: 'Technologies Numérique'
+      }
+      console.log(person);
+  </script>
+
+</body>
+
+</html>

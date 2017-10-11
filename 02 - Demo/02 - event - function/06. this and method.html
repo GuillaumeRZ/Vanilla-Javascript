@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>This and method</title>
+</head>
+
+<body>
+
+  <h1>Psst, look at the Dev.Console 💃</h1>
+
+  <script>
+    const normalText = 'A normal text'; // String Object
+    console.log(normalText);
+    const newText = normalText.toUpperCase();
+    console.log(newText);
+
+    const myH1 = document.querySelector('h1');
+    function whoIsThis() {
+      console.log(this);
+    };
+    myH1.addEventListener('click', whoIsThis);
+  </script>
+
+</body>
+
+</html>

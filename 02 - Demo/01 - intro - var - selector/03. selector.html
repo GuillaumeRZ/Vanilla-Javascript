@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Var Scope Demo</title>
+</head>
+
+<body>
+
+  <h1>Psst, look at the Dev.Console 💃</h1>
+
+  <p id='blue' class='blue'>Blue</p>
+  <p id='red' class='red'>Red</p>
+  <p id='green' class='green'>Green</p>
+  <p id='purple' class='purple'>purple</p>
+
+  <style>
+    p{ font-size: 2em; }
+    .blue{ color: blue; }
+    .red{ color: red; }
+    .green{ color: green; }
+    .purple{ color: purple; }
+  </style>
+
+  <script>
+    // Get Element by ClassName || ID || TagName:
+    const blueParagraph = document.getElementsByClassName('blue');
+    console.log(blueParagraph);
+
+    // Query Selector and Query Selector all:
+    const redParagraph = document.querySelector('.red');
+    console.log(redParagraph);
+    const paragraphs = document.querySelectorAll('p');
+    console.log(paragraphs);
+
+    // Query Selector All and Get Element By (...) actualisation:
+    const greenParagraph = document.querySelectorAll('.green');
+    const purpleParagraph = document.getElementsByClassName('purple');
+    console.log(`Green length: ${greenParagraph.length}`);
+    console.log(`Purple length: ${purpleParagraph.length}`);
+
+    document.getElementById('purple').className = 'green';
+
+    console.log(`Green length: ${greenParagraph.length}`);
+    console.log(`Purple length: ${purpleParagraph.length}`);
+  </script>
+
+</body>
+
+</html>

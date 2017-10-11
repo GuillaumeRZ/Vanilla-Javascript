@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow function ➡️</title>
+</head>
+
+<body>
+
+  <h1>Psst, look at the Dev.Console 💃</h1>
+
+  <script>
+    const fullName = 'DJ Speedloader 🎧';
+    const major = 'Business 🤓';
+
+    // Regular function which accept 2 parameters:
+    function aNormalFunctionTavuh(param1, param2) {
+      console.log(`1. ${param1} est en majeur ${param2}`);
+    }
+    // Call the regular function and pass 2 parameters:
+    aNormalFunctionTavuh(fullName, major);
+
+    // Declare a function into a const:
+    const mySentence = function(a, b) {
+      return `2. ${a} est en majeur ${b}`;
+    }
+    // Call it:
+    console.log(mySentence(fullName, major));
+
+    /*
+     * Let's try an arrow function
+     * (simply, remove the word 'function')
+     * and add a '=>' just after your parameters
+     */
+    const mySentence2 = (a, b) => {
+      return `3. ${a} est en majeur ${b}`;
+    }
+    console.log(mySentence2(fullName, major));
+
+    // Same with only one parameters:
+    const mySentence3 = a => {
+      return `4. Ton petit blaze: ${a}`;
+    }
+    console.log(mySentence3(fullName));
+
+    // Implicit return:
+    const mySentence4 = a => `5. Ton petit blaze implicit: ${a}`;
+    console.log(mySentence4(fullName));
+
+    // Without any argument:
+    const mySentence5 = () => `6. Je suis une arrow function sans argument 🤐`;
+    console.log(mySentence5(fullName));
+
+  </script>
+
+</body>
+
+</html>
