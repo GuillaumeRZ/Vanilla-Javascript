@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🥁 Bruno Drum Kit 🥁</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="keys">
+    <div data-key="66" class="key">
+      <kbd>B</kbd>
+      <span class="sound">euh</span>
+    </div>
+    <div data-key="82" class="key">
+      <kbd>R</kbd>
+      <span class="sound">degage</span>
+    </div>
+    <div data-key="85" class="key">
+      <kbd>U</kbd>
+      <span class="sound">non</span>
+    </div>
+    <div data-key="78" class="key">
+      <kbd>N</kbd>
+      <span class="sound">monde</span>
+    </div>
+    <div data-key="79" class="key">
+      <kbd>O</kbd>
+      <span class="sound">technologie</span>
+    </div>
+  </div>
+
+  <audio data-key="66" src="sounds/euh.wav"></audio>
+  <audio data-key="82" src="sounds/degage.wav"></audio>
+  <audio data-key="85" src="sounds/non.wav"></audio>
+  <audio data-key="78" src="sounds/monde.wav"></audio>
+  <audio data-key="79" src="sounds/technologie.wav"></audio>
+
+<script>
+  /*
+  // On crée une fonction qu'on appelle 'playSound'
+  // On lui passe une référence 'e' qui correspond à 'l'event'
+  // Cette function sera appelé plus bas par une action d'utilisateur
+  */
+  function playSound(e) {
+    /*
+    // On sélectionne dans une const un <audio> unique avec un data-attribute 'key'
+    // Qui match avec le e.keyCode (soit le keyCode de l'event associé)
+    */
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    // Idem que précèdement mais avec les class .key
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    /*
+    // Si !audio n'est pas définis 'false', 'undefined' ou 'null'
+    // On fait un return pour stopper la fonction
+    */
+    if(!audio) return; // Ici return; va nous sortir de la fonction playSound
+    /*
+    // Sinon on continue à descendre dans la fonction
+    // On définis le .currentTime de notre const audio à 0
+    // Pour pouvoir reset le son quand on presse une touche à nouveau
+    // La doc. de .currentTime est disponible ici:
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime
+    */
+    audio.currentTime = 0;
+    // Par la suite on joue le media associé à audio (notre const)
+    audio.play();
+    // Et on ajoute la class 'playing' à la const 'key' que l'on a définis plus haut
+    key.classList.add('playing');
+  };
+
+  /*
+  // On crée une fonction removeTransition
+  // Et on lui passe à nouveau un event
+  */
+  function removeTransition(e) {
+    /*
+    // Si dans notre event 'e' son '.propertyName' est différent de 'transform'
+    // Alors on sort de la fonction avec le return;
+    // Sinon on continue à descendre dans la fonction
+    // DONC on va .remove() la class 'playing'
+    // de 'this' (donc le propriétaire du code actuel)
+    // le propriétaire étant forcément une 'key' si tu regardes plus bas 🚀
+    */
+    if (e.propertyName !== 'transform') return; // Sortie de notre function
+    this.classList.remove('playing');
+  }
+
+  // On sélectionne dans keys TOUS les élèments ayant la class '.key'
+  const keys = document.querySelectorAll('.key');
+  /*
+  // On parcours notre const keys avec un forEach
+  // Et on attache à CHAQUE élèment de notre const keys
+  // Un listener sur l'action 'transitionend'
+  // Puis on appel la fonction 'removeTransition'
+  // La doc. de l'event transitionend:
+  // https://developer.mozilla.org/fr/docs/Web/Events/transitionend
+  */
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  /*
+  // On attache à tout l'objet 'Window'
+  // (donc notre fenêtre lolol)
+  // Un listener 'keydown', qui appellera
+  // La fonction 'playSound'
+  // La doc. de l'event keydown:
+  // https://developer.mozilla.org/fr/docs/Web/Events/keydown
+  */
+  window.addEventListener('keydown', playSound);
+</script>
+
+</body>
+</html>
