@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+// Déclaration d'un tableau vide
+const keyPressed = [];
+// Déclaration du code secret à taper
+const secretCode = 'secret';
+
+// On attache sur l'objet window un event 'keyup' et on lui passe le paramètre e
+// Pour avoir toute la trace de ce qu'il se passe:
+window.addEventListener('keyup', (e) => {
+  // On log son .key après pour savoir quelle touche a été pressé:
+  console.log(e.key);
+  // On pousse dans le tableau keyPressed la key en cours:
+  keyPressed.push(e.key);
+  // On 'splice' le tableau d'une valeur a une autre, ici
+  // On prend -secretCode.length donc sa longueur en négative -1
+  // Et on va dynamiquement modifier l'autre valeur en fonction de ce qu'il y a dans le tableau
+  keyPressed.splice(-secretCode.length - 1, keyPressed.length - secretCode.length);
+
+  // Si on match le code, c'est gagné et on appel nos licornes
+  if (keyPressed.join('').includes(secretCode)) {
+    console.log('DING DING!');
+    cornify_add();
+  }
+  console.log(keyPressed);
+});
+</script>
+</body>
+</html>
