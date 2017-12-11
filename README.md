@@ -14,3 +14,9 @@ Il se structure comme suit:
 🙋 2. Any questions ? ➡️ [@Gouig_]
 
 [@Gouig_]: <https://twitter.com/Gouig_>
+
+👊 Crédits:
+
+http://wesbos.com/
+http://thecodingtrain.com/
+https://frank.taillandier.me
