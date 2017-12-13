@@ -15,28 +15,40 @@
     </ul>
   </form>
 <script>
+// File to fetch
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+// Empty array to push our JSON into
 const cities = [];
+
+// We fetch our endpoint
 fetch(endpoint)
+  // Then we handle the promise and convert it to JSON
   .then(blob => blob.json())
+  // Then we push our data into our empty array
   .then(data => cities.push(...data));
 
+// A function to find a parameter (wordToMatch) depending on a regex
+// then we return each city or state corresponding
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
-    // here we need to figure out if the city or state matches what was searched
     const regex = new RegExp(wordToMatch, 'gi');
     return place.city.match(regex) || place.state.match(regex)
   });
 }
 
+// Just a little function to add a commas to our number
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
+// The function to display our matches
 function displayMatches() {
+  // we call our function findMatches with our parameters
   const matchArray = findMatches(this.value, cities);
+  // we map into our const
   const html = matchArray.map(place => {
+    // for each place we return the name
     const regex = new RegExp(this.value, 'gi');
     const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
     const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
